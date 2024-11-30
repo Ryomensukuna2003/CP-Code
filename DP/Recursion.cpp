@@ -16,27 +16,39 @@
 // #define value_sort(v) sort(all(v),[](auto &l,auto &r){return l.second<r.second;});
 // #define rep(i, l, r) for (ll(i) = (l); (i) < (r); (i)++)
 
+// int sumofnum(int n){
+//     if(n==0) return 0;
+//     int left_part=sumofnum(n-1);
+//     return left_part+n;
+// }
+
+// int sumofdigit(int n){
+//     if(n==0)return 0;
+//     return (n % 10) + sumofdigit(n / 10);
+// }
+
+// void printParttern(int n){
+//     if(n==1){
+//         cout<<1<<endl;
+//         return;
+//     }
+//     rep(i,1,n+1) cout<<i<<" ";
+//     cout<<endl;
+//     printParttern(n-1);
+//     rep(i,1,n+1) cout<<i<<" ";
+//     cout<<endl;
+// }
+
+// int fib(int n){
+//     if(n==1)return 0;
+//     if(n==2)return 1;
+//     return fib(n-1)+fib(n-2);
+// }
+
 // void solve()
 // {
-//     int n,k;cin>>n>>k;
-//     vll heights;forin(n,heights);
-//     vll dp(n,inf);
-//     dp[0]=0; // Hardcoding inital val
-    
-//     // Running loop for every stone
-//     for(int i=1;i<n;i++){
-//         int min_cost=inf;
-//         // Caluculating every K possible moves 
-//         for(int j=1;j<=k;j++){
-//             // Checking if index is not going negative
-//             if(i-j>=0){
-//                 int cost=abs(heights[i]-heights[i-j])+dp[i-j];
-//                 min_cost=min(min_cost,cost);
-//             }
-//         }
-//         dp[i]=min_cost;
-//     }
-//     cout<<dp[n-1]<<endl;
+//     int n;cin>>n;
+//     cout<<fib(n);
 // }
 
 // int main(){
@@ -48,6 +60,8 @@
 //     }
 //     return 0;
 // }
+
+
 
 
 #include <bits/stdc++.h>
@@ -68,16 +82,9 @@ const ll inf = 2e18;
 #define value_sort(v) sort(all(v),[](auto &l,auto &r){return l.second<r.second;});
 #define rep(i, l, r) for (ll(i) = (l); (i) < (r); (i)++)
 
-ll solve(vll vec1,vll dp, int k){
-    // if()
-}
-
 void solve()
 {
-    int n,k;cin>>n>>k;
-    vll vec1;forin(n,vec1);
-    vll dp(n);
-    cout<<solve(vec1,dp,k);
+    
 }
 
 int main(){
