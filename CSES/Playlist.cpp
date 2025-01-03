@@ -7,7 +7,7 @@ using namespace std;
 #define ll       long long
 #define pb       push_back
 const ll M = 1e9 + 7;
-const ll N = 1e5 + 4;
+const ll N = 1e5 + 5;
 const ll inf = 2e18;
 #define all(x)   (x).begin(), (x).end()
 #define FAST     ios_base ::sync_with_stdio(false); cin.tie(NULL)
@@ -16,29 +16,35 @@ const ll inf = 2e18;
 #define value_sort(v) sort(all(v),[](auto &l,auto &r){return l.second<r.second;});
 #define rep(i, l, r) for (ll(i) = (l); (i) < (r); (i)++)
 
-int dp[101][N];
-
-ll solve_recursive(vector<ll>&vec1, ll sum_left, int index){
-    // check
-    if(sum_left == 0) return 1;
-    // base
-    if(index >= vec1.size() || sum_left <0) return 0;
-    // Memo
-    if(dp[index][sum_left]!=-1) return dp[index][sum_left];
-    // choice
-    return dp[index][sum_left]= (solve_recursive(vec1, sum_left - vec1[index], index + 1) || solve_recursive(vec1, sum_left, index + 1));
-}
-
 void solve()
 {
-    memset(dp,-1,sizeof(dp));
-    ll n,q;cin>>n>>q;
-    vll vec1,target;
-    forin(n,vec1);
-    forin(q,target);
-    for(auto x:target){
-        solve_recursive(vec1, x, 0)==0? cout<<-1<<endl : cout<<1<<endl; 
+    int n;cin>>n;
+    vll vec1;forin(n,vec1);
+    map<int, int> mp;
+    int left = 0, right=0;
+    int ans = right-left+1;
+    for(int i=0;i<n;i++){
+        if(mp.find(vec1[i])!=mp.end()){
+            int index = mp[vec1[i]];
+            if(index<left){
+                mp[vec1[i]]=i;
+                right = i;
+                ans = max(ans, right-left+1);
+            } else {
+              left = mp[vec1[i]]+1;
+              mp[vec1[i]]=i;
+              if(left<right) right=left;
+              ans = max(ans, right-left+1);
+            }
+
+
+        }else {
+            mp[vec1[i]]=i;
+            right = i;
+            ans = max(ans, right-left+1);
+        }
     }
+    cout<<ans<<endl;
 }
 
 int main(){
