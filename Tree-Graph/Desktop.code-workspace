@@ -1,0 +1,52 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../Documents"
+		},
+		{
+			"path": "../../../dotfiles"
+		},
+		{
+			"path": "../../../Downloads"
+		},
+		{
+			"path": "../../../FILES"
+		},
+		{
+			"path": "../../../Music"
+		},
+		{
+			"path": "../../../nex"
+		},
+		{
+			"path": "../../../node_modules"
+		},
+		{
+			"path": "../../../Notes"
+		},
+		{
+			"path": "../../../Pictures"
+		},
+		{
+			"path": "../../../Public"
+		},
+		{
+			"path": "../../../Resume"
+		},
+		{
+			"path": "../../../shell"
+		},
+		{
+			"path": "../../../snap"
+		},
+		{
+			"path": "../../../Templates"
+		},
+		{
+			"path": "../../../Videos"
+		}
+	]
+}
