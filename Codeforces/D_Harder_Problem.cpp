@@ -1,39 +1,48 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define vll vector<long long int>
-#define ll long long
+//                                「本 物 の 柔 術 を 見 せ て や る」
+
+using ll = long long;
+using vll = vector<ll>;
 #define pb push_back
-const ll M = 1e9 + 7;
-const ll N = 1e5 + 5;
-#define FAST ios_base::sync_with_stdio(false); cin.tie(NULL)
+#define all(x) (x).begin(), (x).end()
+#define endl "\n"
+
+constexpr ll M = 1e9 + 7;
+constexpr ll N = 1e5 + 5;
+constexpr ll inf = 2e18;
+
+#define FAST ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
+#define rep(i, l, r) for (ll i = (l); i < (r); i++)
+#define rev(i, r, l) for (ll i = (r); i >= (l); i--)
+#define forin(n, v) for (ll i = 0; i < (n); i++) { ll x; cin >> x; v.pb(x); }
+#define forout(v) for (const auto& y : (v)) { cout << y << ' '; };
+#define value_sort(v) sort(all(v), [](const auto &l, const auto &r) { return l.second < r.second; });
+
+#define yes cout << "YES" << endl;
+#define no cout << "NO" << endl;
 
 void solve() {
-    ll n; cin >> n;
-    vll vec1;
-    set<ll> unused;
-    map<ll, bool> m1;
-
-    for (int i = 1; i <= n; i++)  unused.insert(i);
-
-    for (int i = 0; i < n; i++) {
-        int x; cin >> x;
-        vec1.pb(x);
-        m1[x] = false;
-        unused.erase(x); // Remove already-present element from unused
+    ll n;cin>>n;
+    vll vec1,ans;forin(n,vec1);
+    set<ll> unused,s1;
+    rep(i,1,n+1)unused.insert(i);
+    rep(i,0,n){
+        int prev_size=s1.size();
+        s1.insert(vec1[i]);
+        int new_size=s1.size();
+        if(prev_size+1==new_size)ans.push_back(vec1[i]);
     }
-
-    for (int i = 0; i < n; i++) {
-        if (m1[vec1[i]] == false) {
-            cout << vec1[i] << ' ';
-            m1[vec1[i]] = true;
-        } else {
-            auto it = unused.begin(); // Get the smallest unused element
-            cout << *it << ' ';
-            unused.erase(it); // Remove it from the set
-        }
+    rep(i,0,ans.size()) unused.erase(ans[i]); // Remove used elements
+    forout(ans);
+    int remaining=n-ans.size();
+    for(auto x:unused){
+        if(remaining==0)break;
+        cout<<x<<" ";
+        remaining--;
     }
-    cout << endl;
+    cout<<endl;
 }
 
 int main() {
@@ -45,3 +54,5 @@ int main() {
     }
     return 0;
 }
+
+
